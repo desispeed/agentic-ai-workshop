@@ -168,6 +168,72 @@
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { top: 16px; transform: rotate(-45deg); }
 
+    /* ═══ AUDIO PLAYER ═══ */
+    .audio-player {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .audio-player .play-btn {
+      background: var(--coral);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .audio-player .play-btn:hover {
+      background: #d4453a;
+      transform: scale(1.05);
+    }
+
+    .audio-player .play-btn svg { width: 16px; height: 16px; }
+
+    .audio-player .audio-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .audio-player .audio-time {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-left: auto;
+    }
+
+    .audio-player .audio-progress {
+      flex: 1;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .audio-player .audio-progress-fill {
+      height: 100%;
+      background: var(--coral);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
     /* ═══ THEME TOGGLE ═══ */
     .theme-toggle {
       background: none;
@@ -1008,6 +1074,12 @@
 <!-- ═══════════ PAGE 1: HOME ═══════════ -->
 <section class="hero page" id="home">
   <div class="hero-content">
+    <div class="audio-player reveal" data-src="/audio/ch00-intro.mp3">
+      <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
+      <span class="audio-label">Listen to intro</span>
+      <div class="audio-progress"><div class="audio-progress-fill"></div></div>
+      <span class="audio-time">0:00</span>
+    </div>
     <div class="hero-badge reveal">Beginners Workshop 2026</div>
     <h1 class="reveal stagger-1">From Zero<br>to <em>Agent</em></h1>
     <p class="hero-sub reveal stagger-2">A seven-chapter journey through the ideas powering the next era of AI &mdash; from language models to autonomous agents, with a focus on building with Claude.</p>
@@ -1055,6 +1127,12 @@
       <div class="chapter-num">Chapter 01</div>
       <h2>Understanding <em>LLMs</em></h2>
       <p class="chapter-lead">Large Language Models are the engine behind modern AI. They don't think like us &mdash; but they've learned to work with language in ways that are remarkably useful.</p>
+      <div class="audio-player" data-src="/audio/ch01-llms.mp3">
+        <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
+        <span class="audio-label">Listen to chapter</span>
+        <div class="audio-progress"><div class="audio-progress-fill"></div></div>
+        <span class="audio-time">0:00</span>
+      </div>
     </div>
 
     <div class="content-section reveal">
@@ -1222,6 +1300,12 @@
       <div class="chapter-num">Chapter 02</div>
       <h2>Frontier <em>Models</em></h2>
       <p class="chapter-lead">Not all AI models are created equal. Frontier models represent the bleeding edge &mdash; the most capable, most tested, and most carefully aligned systems available today.</p>
+      <div class="audio-player" data-src="/audio/ch02-frontier.mp3">
+        <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
+        <span class="audio-label">Listen to chapter</span>
+        <div class="audio-progress"><div class="audio-progress-fill"></div></div>
+        <span class="audio-time">0:00</span>
+      </div>
     </div>
 
     <div class="content-section reveal">
@@ -1329,6 +1413,12 @@
       <div class="chapter-num">Chapter 03</div>
       <h2>Inference <em>&amp; Prompting</em></h2>
       <p class="chapter-lead">Training creates the model. Inference is when you actually use it. Understanding how inference works &mdash; and how to prompt effectively &mdash; is the key to getting great results.</p>
+      <div class="audio-player" data-src="/audio/ch03-inference.mp3">
+        <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
+        <span class="audio-label">Listen to chapter</span>
+        <div class="audio-progress"><div class="audio-progress-fill"></div></div>
+        <span class="audio-time">0:00</span>
+      </div>
     </div>
 
     <div class="content-section reveal">
@@ -1454,6 +1544,12 @@
       <div class="chapter-num">Chapter 04</div>
       <h2>Claude &amp; <em>Agentic AI</em></h2>
       <p class="chapter-lead">This is where everything comes together. Agentic AI uses LLMs not just as chatbots, but as autonomous agents that can reason, plan, use tools, and take action in the real world.</p>
+      <div class="audio-player" data-src="/audio/ch04-claude.mp3">
+        <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
+        <span class="audio-label">Listen to chapter</span>
+        <div class="audio-progress"><div class="audio-progress-fill"></div></div>
+        <span class="audio-time">0:00</span>
+      </div>
     </div>
 
     <div class="content-section reveal">
@@ -2075,6 +2171,70 @@
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+  });
+
+  // ── Audio players ──
+  const pauseIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+  const playIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>';
+  let currentAudio = null;
+  let currentPlayer = null;
+
+  document.querySelectorAll('.audio-player').forEach(player => {
+    const btn = player.querySelector('.play-btn');
+    const progressBar = player.querySelector('.audio-progress');
+    const progressFill = player.querySelector('.audio-progress-fill');
+    const timeEl = player.querySelector('.audio-time');
+    let audio = null;
+
+    function formatTime(s) {
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    btn.addEventListener('click', () => {
+      if (!audio) {
+        audio = new Audio(player.dataset.src);
+        audio.addEventListener('timeupdate', () => {
+          const pct = (audio.currentTime / audio.duration) * 100;
+          progressFill.style.width = pct + '%';
+          timeEl.textContent = formatTime(audio.currentTime);
+        });
+        audio.addEventListener('ended', () => {
+          btn.innerHTML = playIcon;
+          progressFill.style.width = '0%';
+          timeEl.textContent = '0:00';
+          currentAudio = null;
+          currentPlayer = null;
+        });
+        audio.addEventListener('loadedmetadata', () => {
+          timeEl.textContent = formatTime(audio.duration);
+        });
+      }
+
+      if (currentAudio && currentAudio !== audio) {
+        currentAudio.pause();
+        currentPlayer.querySelector('.play-btn').innerHTML = playIcon;
+      }
+
+      if (audio.paused) {
+        audio.play();
+        btn.innerHTML = pauseIcon;
+        currentAudio = audio;
+        currentPlayer = player;
+      } else {
+        audio.pause();
+        btn.innerHTML = playIcon;
+      }
+    });
+
+    progressBar.addEventListener('click', (e) => {
+      if (audio && audio.duration) {
+        const rect = progressBar.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+      }
+    });
   });
 
   // ── Smooth scroll for anchor links ──
