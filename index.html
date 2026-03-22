@@ -22,9 +22,40 @@
       --text: #2c2c3a;
       --text-light: #6b6b7b;
       --page-bg: #faf7f2;
+      --card-bg: #fff;
+      --nav-bg: rgba(250, 247, 242, 0.85);
+      --nav-bg-solid: rgba(250, 247, 242, 0.97);
+      --border: rgba(26, 26, 46, 0.08);
+      --border-medium: rgba(26, 26, 46, 0.1);
+      --card-border: rgba(26, 26, 46, 0.07);
+      --table-row-hover: rgba(232, 93, 74, 0.02);
+      --shadow-sm: rgba(26, 26, 46, 0.06);
+      --shadow-md: rgba(26, 26, 46, 0.15);
+      --term-bg: #1a1a2e;
+      --term-text: #e0ddd5;
       --font-display: 'Instrument Serif', Georgia, serif;
       --font-body: 'DM Sans', system-ui, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --ink: #e8e4dc;
+      --cream: #1e1e2e;
+      --cream-dark: #161624;
+      --text: #d0ccc4;
+      --text-light: #9a9aaa;
+      --page-bg: #121220;
+      --card-bg: #1a1a2e;
+      --nav-bg: rgba(18, 18, 32, 0.9);
+      --nav-bg-solid: rgba(18, 18, 32, 0.97);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.1);
+      --card-border: rgba(255, 255, 255, 0.07);
+      --table-row-hover: rgba(232, 93, 74, 0.05);
+      --shadow-sm: rgba(0, 0, 0, 0.2);
+      --shadow-md: rgba(0, 0, 0, 0.3);
+      --term-bg: #0e0e1a;
+      --term-text: #d0ccc4;
     }
 
     html { scroll-behavior: smooth; }
@@ -45,15 +76,15 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(250, 247, 242, 0.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
-      border-bottom: 1px solid rgba(26, 26, 46, 0.08);
+      border-bottom: 1px solid var(--border);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     }
 
     nav.scrolled {
-      box-shadow: 0 4px 30px rgba(26, 26, 46, 0.06);
+      box-shadow: 0 4px 30px var(--shadow-sm);
     }
 
     nav.hidden {
@@ -97,7 +128,7 @@
       letter-spacing: 0.01em;
     }
 
-    .nav-links a:hover { color: var(--ink); background: rgba(26, 26, 46, 0.04); }
+    .nav-links a:hover { color: var(--ink); background: var(--border); }
     .nav-links a.active { color: var(--coral); background: rgba(232, 93, 74, 0.08); }
 
     .nav-chapter {
@@ -136,6 +167,35 @@
     .nav-toggle.open span:nth-child(1) { top: 16px; transform: rotate(45deg); }
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { top: 16px; transform: rotate(-45deg); }
+
+    /* ═══ THEME TOGGLE ═══ */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      color: var(--ink);
+      background: var(--border);
+    }
+
+    .theme-toggle svg { width: 18px; height: 18px; }
+
+    .theme-toggle .icon-moon { display: block; }
+    .theme-toggle .icon-sun { display: none; }
+
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
     /* ═══ PAGE SECTIONS ═══ */
     .page {
@@ -261,13 +321,22 @@
       border-radius: 12px;
       text-decoration: none;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 15px rgba(26, 26, 46, 0.15);
+      box-shadow: 0 4px 15px var(--shadow-md);
     }
 
     .hero-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(26, 26, 46, 0.2);
+      box-shadow: 0 8px 30px var(--shadow-md);
       background: #24243e;
+    }
+
+    [data-theme="dark"] .hero-cta {
+      background: var(--coral);
+      color: #fff;
+    }
+
+    [data-theme="dark"] .hero-cta:hover {
+      background: #d4453a;
     }
 
     .hero-cta svg {
@@ -285,14 +354,14 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      background: rgba(26, 26, 46, 0.06);
+      background: var(--border);
       border-radius: 16px;
       overflow: hidden;
       text-align: left;
     }
 
     .hero-chapter {
-      background: var(--page-bg);
+      background: var(--card-bg);
       padding: 1.5rem;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -322,7 +391,7 @@
     .chapter-header {
       margin-bottom: 4rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(26, 26, 46, 0.08);
+      border-bottom: 1px solid var(--border);
     }
 
     .chapter-num {
@@ -424,8 +493,8 @@
 
     /* Code-style blocks */
     .term-block {
-      background: var(--ink);
-      color: #e0ddd5;
+      background: var(--term-bg);
+      color: var(--term-text);
       border-radius: 12px;
       padding: 2rem;
       margin: 2rem 0;
@@ -449,8 +518,8 @@
     }
 
     .concept-card {
-      background: #fff;
-      border: 1px solid rgba(26, 26, 46, 0.07);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 1.75rem;
       transition: all 0.3s ease;
@@ -458,7 +527,7 @@
 
     .concept-card:hover {
       border-color: rgba(232, 93, 74, 0.2);
-      box-shadow: 0 8px 30px rgba(26, 26, 46, 0.06);
+      box-shadow: 0 8px 30px var(--shadow-sm);
       transform: translateY(-2px);
     }
 
@@ -499,12 +568,12 @@
       margin: 2rem 0;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(26, 26, 46, 0.08);
+      border: 1px solid var(--border);
     }
 
     .comparison-table th {
-      background: var(--ink);
-      color: var(--cream);
+      background: var(--term-bg);
+      color: var(--term-text);
       font-family: var(--font-mono);
       font-size: 0.72rem;
       letter-spacing: 0.08em;
@@ -517,12 +586,12 @@
     .comparison-table td {
       padding: 1rem 1.25rem;
       font-size: 0.9rem;
-      border-bottom: 1px solid rgba(26, 26, 46, 0.05);
-      background: #fff;
+      border-bottom: 1px solid var(--border);
+      background: var(--card-bg);
     }
 
     .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table tr:hover td { background: rgba(232, 93, 74, 0.02); }
+    .comparison-table tr:hover td { background: var(--table-row-hover); }
 
     /* Flow diagrams */
     .flow {
@@ -535,8 +604,8 @@
     }
 
     .flow-step {
-      background: #fff;
-      border: 1px solid rgba(26, 26, 46, 0.1);
+      background: var(--card-bg);
+      border: 1px solid var(--border-medium);
       border-radius: 10px;
       padding: 1rem 1.5rem;
       text-align: center;
@@ -573,8 +642,8 @@
     }
 
     .product-card {
-      background: #fff;
-      border: 1px solid rgba(26, 26, 46, 0.07);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 14px;
       padding: 2rem;
       display: grid;
@@ -586,7 +655,7 @@
 
     .product-card:hover {
       border-color: rgba(232, 93, 74, 0.15);
-      box-shadow: 0 12px 40px rgba(26, 26, 46, 0.06);
+      box-shadow: 0 12px 40px var(--shadow-sm);
     }
 
     .product-icon {
@@ -643,7 +712,7 @@
       align-items: start;
       margin-bottom: 2rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+      border-bottom: 1px solid var(--border);
     }
 
     .step-list li:last-child { border-bottom: none; margin-bottom: 0; }
@@ -676,7 +745,7 @@
       align-items: center;
       margin-top: 5rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(26, 26, 46, 0.08);
+      border-top: 1px solid var(--border);
     }
 
     .page-nav a {
@@ -712,7 +781,7 @@
     footer {
       text-align: center;
       padding: 3rem 2rem;
-      border-top: 1px solid rgba(26, 26, 46, 0.06);
+      border-top: 1px solid var(--border);
       color: var(--text-light);
       font-size: 0.85rem;
     }
@@ -768,11 +837,11 @@
         top: 64px;
         left: 0;
         right: 0;
-        background: rgba(250, 247, 242, 0.97);
+        background: var(--nav-bg-solid);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 1rem;
-        border-bottom: 1px solid rgba(26, 26, 46, 0.08);
+        border-bottom: 1px solid var(--border);
         transform: translateY(-110%);
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
@@ -913,9 +982,15 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#home" class="nav-logo">agentic<span>AI</span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home"><span class="nav-chapter">00</span> Home</a></li>
       <li><a href="#llms"><span class="nav-chapter">01</span> LLMs</a></li>
@@ -1984,6 +2059,22 @@
       navToggle.classList.remove('open');
       navLinksEl.classList.remove('open');
     });
+  });
+
+  // ── Theme toggle ──
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
   });
 
   // ── Smooth scroll for anchor links ──
