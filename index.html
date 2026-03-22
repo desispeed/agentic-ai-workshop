@@ -737,7 +737,27 @@
     .stagger-3 { transition-delay: 0.15s; }
     .stagger-4 { transition-delay: 0.2s; }
 
-    /* ═══ RESPONSIVE ═══ */
+    /* ═══ RESPONSIVE — LARGE SCREENS ═══ */
+    @media (min-width: 1200px) {
+      .page-inner {
+        max-width: 960px;
+      }
+
+      .hero-content {
+        max-width: 1000px;
+      }
+
+      .concept-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 1.15rem 1.75rem;
+      }
+    }
+
+    /* ═══ RESPONSIVE — TABLET ═══ */
     @media (max-width: 768px) {
       .hero-chapters {
         grid-template-columns: repeat(2, 1fr);
@@ -773,11 +793,100 @@
       }
 
       .page { padding: 100px 1.25rem 60px; }
+
+      .comparison-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .term-block {
+        padding: 1.25rem;
+        font-size: 0.78rem;
+      }
+
+      .callout {
+        padding: 1.25rem 1.25rem;
+      }
     }
 
+    /* ═══ RESPONSIVE — MOBILE ═══ */
     @media (max-width: 480px) {
       .hero-chapters {
         grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 10vw, 3.5rem);
+      }
+
+      .hero-sub {
+        font-size: 1rem;
+      }
+
+      .hero-badge {
+        font-size: 0.68rem;
+        padding: 0.4rem 0.85rem;
+      }
+
+      .chapter-header h2 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+      }
+
+      .chapter-lead {
+        font-size: 1rem;
+      }
+
+      .content-section h3 {
+        font-size: 1.3rem;
+      }
+
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step-list li {
+        grid-template-columns: 36px 1fr;
+        gap: 0.75rem;
+      }
+
+      .step-list li::before {
+        font-size: 1.4rem;
+      }
+
+      .page-nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .page-nav a {
+        max-width: 100%;
+      }
+
+      .page-nav a.next {
+        text-align: left;
+        margin-left: 0;
+      }
+
+      .page { padding: 88px 1rem 48px; }
+
+      .term-block {
+        padding: 1rem;
+        font-size: 0.72rem;
+        border-radius: 8px;
+      }
+
+      .product-card {
+        padding: 1.25rem;
+      }
+
+      .concept-card {
+        padding: 1.25rem;
+      }
+
+      .flow-step {
+        min-width: 100px;
+        padding: 0.75rem 1rem;
       }
     }
 
