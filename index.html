@@ -23,8 +23,8 @@
       --text-light: #6b6b7b;
       --page-bg: #faf7f2;
       --card-bg: #fff;
-      --nav-bg: rgba(250, 247, 242, 0.85);
-      --nav-bg-solid: rgba(250, 247, 242, 0.97);
+      --nav-bg: #faf7f2;
+      --nav-bg-solid: #faf7f2;
       --border: rgba(26, 26, 46, 0.08);
       --border-medium: rgba(26, 26, 46, 0.1);
       --card-border: rgba(26, 26, 46, 0.07);
@@ -46,8 +46,8 @@
       --text-light: #9a9aaa;
       --page-bg: #121220;
       --card-bg: #1a1a2e;
-      --nav-bg: rgba(18, 18, 32, 0.9);
-      --nav-bg-solid: rgba(18, 18, 32, 0.97);
+      --nav-bg: #121220;
+      --nav-bg-solid: #121220;
       --border: rgba(255, 255, 255, 0.08);
       --border-medium: rgba(255, 255, 255, 0.1);
       --card-border: rgba(255, 255, 255, 0.07);
@@ -67,6 +67,7 @@
       line-height: 1.7;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      isolation: isolate;
     }
 
     /* ═══ NAVIGATION ═══ */
@@ -269,6 +270,7 @@
       min-height: 100vh;
       padding: 120px 2rem 80px;
       position: relative;
+      z-index: 1;
     }
 
     .page-inner {
