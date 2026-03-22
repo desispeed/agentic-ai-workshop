@@ -86,6 +86,16 @@
       text-align: center;
     }
 
+    .about-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 3px solid rgba(26, 26, 46, 0.08);
+      box-shadow: 0 8px 30px rgba(26, 26, 46, 0.1);
+    }
+
     .about-card h1 {
       font-family: var(--font-display);
       font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -181,6 +191,7 @@
 
 <main>
   <div class="about-card">
+    <img src="/profile.jpg" alt="Monal Valia" class="about-avatar">
     <h1>Monal <em>Valia</em></h1>
     <div class="about-role">Workshop Creator</div>
     <p>Building at the intersection of AI and practical applications. This workshop was created to make agentic AI concepts accessible to everyone — from first principles to building your own agents.</p>
