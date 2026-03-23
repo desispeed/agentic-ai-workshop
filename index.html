@@ -233,6 +233,145 @@
       transition: width 0.1s linear;
     }
 
+    /* ═══ ENHANCED ANIMATIONS ═══ */
+
+    /* Hero title float */
+    .hero h1 {
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Staggered card reveals */
+    .concept-card, .product-card, .hero-chapter {
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .concept-grid .concept-card:nth-child(1) { transition-delay: 0.05s; }
+    .concept-grid .concept-card:nth-child(2) { transition-delay: 0.1s; }
+    .concept-grid .concept-card:nth-child(3) { transition-delay: 0.15s; }
+    .concept-grid .concept-card:nth-child(4) { transition-delay: 0.2s; }
+
+    .product-grid .product-card:nth-child(1) { transition-delay: 0.05s; }
+    .product-grid .product-card:nth-child(2) { transition-delay: 0.12s; }
+    .product-grid .product-card:nth-child(3) { transition-delay: 0.19s; }
+    .product-grid .product-card:nth-child(4) { transition-delay: 0.26s; }
+    .product-grid .product-card:nth-child(5) { transition-delay: 0.33s; }
+    .product-grid .product-card:nth-child(6) { transition-delay: 0.4s; }
+
+    /* Card hover lift */
+    .concept-card:hover,
+    .hero-chapter:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px var(--shadow-sm);
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Flow step pulse on hover */
+    .flow-step {
+      transition: all 0.3s ease;
+    }
+
+    .flow-step:hover {
+      transform: scale(1.05);
+      border-color: var(--coral);
+    }
+
+    /* Term block glow */
+    .term-block {
+      transition: box-shadow 0.3s ease;
+    }
+
+    .term-block:hover {
+      box-shadow: 0 0 30px rgba(232, 93, 74, 0.1);
+    }
+
+    /* Callout slide-in */
+    .callout {
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .callout:hover {
+      transform: translateX(4px);
+    }
+
+    /* CTA button shimmer */
+    .hero-cta {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    /* Table row highlight animation */
+    .comparison-table tr {
+      transition: all 0.25s ease;
+    }
+
+    .comparison-table tr:hover td {
+      padding-left: 1.5rem;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 3rem 0 0;
+    }
+
+    .stat-item {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--coral);
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 480px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     /* ═══ READING TIME ═══ */
     .reading-time {
       font-family: var(--font-mono);
@@ -1136,6 +1275,24 @@
       <span class="audio-label">Listen to intro</span>
       <div class="audio-progress"><div class="audio-progress-fill"></div></div>
       <span class="audio-time">0:00</span>
+    </div>
+    <div class="stats-bar reveal stagger-3">
+      <div class="stat-item">
+        <div class="stat-number" data-target="7">0</div>
+        <div class="stat-label">Chapters</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="33">0</div>
+        <div class="stat-label">Minutes of Audio</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="27">0</div>
+        <div class="stat-label">Glossary Terms</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="6">0</div>
+        <div class="stat-label">LLMs Covered</div>
+      </div>
     </div>
     <div class="hero-chapters reveal stagger-4">
       <a href="#llms" class="hero-chapter">
@@ -2356,6 +2513,56 @@
       }
     });
   });
+
+  // ── Hero parallax on mouse move ──
+  const heroSection = document.querySelector('.hero');
+  const heroContent = document.querySelector('.hero-content');
+
+  if (heroSection && heroContent) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      heroContent.style.transform = `translate(${x * -12}px, ${y * -8}px)`;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      heroContent.style.transform = 'translate(0, 0)';
+      heroContent.style.transition = 'transform 0.5s ease';
+      setTimeout(() => { heroContent.style.transition = ''; }, 500);
+    });
+  }
+
+  // ── Counter animation ──
+  let countersAnimated = false;
+  const statsBar = document.querySelector('.stats-bar');
+
+  function animateCounters() {
+    if (countersAnimated) return;
+    countersAnimated = true;
+    document.querySelectorAll('.stat-number').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      const duration = 900;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  if (statsBar) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animateCounters();
+      });
+    }, { threshold: 0.5 });
+    statsObserver.observe(statsBar);
+  }
 
   // ── Smooth scroll for anchor links ──
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
