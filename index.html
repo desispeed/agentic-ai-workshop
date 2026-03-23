@@ -2523,16 +2523,20 @@
   // ── Mobile nav toggle ──
   const navToggle = document.getElementById('navToggle');
   const navLinksEl = document.getElementById('navLinks');
+  let navTouched = false;
 
-  function toggleNav(e) {
+  navToggle.addEventListener('touchstart', function(e) {
     e.preventDefault();
-    e.stopPropagation();
+    navTouched = true;
     navToggle.classList.toggle('open');
     navLinksEl.classList.toggle('open');
-  }
+  }, { passive: false });
 
-  navToggle.addEventListener('click', toggleNav);
-  navToggle.addEventListener('touchend', toggleNav);
+  navToggle.addEventListener('click', function() {
+    if (navTouched) { navTouched = false; return; }
+    navToggle.classList.toggle('open');
+    navLinksEl.classList.toggle('open');
+  });
 
   navLinksEl.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
@@ -2550,17 +2554,24 @@
     document.documentElement.setAttribute('data-theme', 'dark');
   }
 
-  function toggleTheme(e) {
+  let themeTouched = false;
+
+  themeToggle.addEventListener('touchstart', function(e) {
     e.preventDefault();
-    e.stopPropagation();
+    themeTouched = true;
     const current = document.documentElement.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-  }
+  }, { passive: false });
 
-  themeToggle.addEventListener('click', toggleTheme);
-  themeToggle.addEventListener('touchend', toggleTheme);
+  themeToggle.addEventListener('click', function() {
+    if (themeTouched) { themeTouched = false; return; }
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
 
   // ── Audio players ──
   const pauseIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
