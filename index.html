@@ -88,9 +88,6 @@
       box-shadow: 0 4px 30px var(--shadow-sm);
     }
 
-    nav.hidden {
-      transform: translateY(-100%);
-    }
 
     .nav-inner {
       max-width: 1200px;
@@ -2221,11 +2218,6 @@
   window.addEventListener('scroll', () => {
     const current = window.scrollY;
     navbar.classList.toggle('scrolled', current > 50);
-    if (current > lastScroll && current > 200) {
-      navbar.classList.add('hidden');
-    } else {
-      navbar.classList.remove('hidden');
-    }
     lastScroll = current;
   }, { passive: true });
 
