@@ -2524,10 +2524,15 @@
   const navToggle = document.getElementById('navToggle');
   const navLinksEl = document.getElementById('navLinks');
 
-  navToggle.addEventListener('click', () => {
+  function toggleNav(e) {
+    e.preventDefault();
+    e.stopPropagation();
     navToggle.classList.toggle('open');
     navLinksEl.classList.toggle('open');
-  });
+  }
+
+  navToggle.addEventListener('click', toggleNav);
+  navToggle.addEventListener('touchend', toggleNav);
 
   navLinksEl.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
@@ -2545,12 +2550,17 @@
     document.documentElement.setAttribute('data-theme', 'dark');
   }
 
-  themeToggle.addEventListener('click', () => {
+  function toggleTheme(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const current = document.documentElement.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-  });
+  }
+
+  themeToggle.addEventListener('click', toggleTheme);
+  themeToggle.addEventListener('touchend', toggleTheme);
 
   // ── Audio players ──
   const pauseIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
