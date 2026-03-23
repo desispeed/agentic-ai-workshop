@@ -233,6 +233,25 @@
       transition: width 0.1s linear;
     }
 
+    /* ═══ READING TIME ═══ */
+    .reading-time {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+      margin-top: 1rem;
+    }
+
+    .callout a {
+      color: var(--coral);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .callout a:hover {
+      text-decoration: underline;
+    }
+
     /* ═══ THEME TOGGLE ═══ */
     .theme-toggle {
       background: none;
@@ -1152,6 +1171,7 @@
       <div class="chapter-num">Chapter 01</div>
       <h2>Understanding <em>LLMs</em></h2>
       <p class="chapter-lead">Large Language Models are the engine behind modern AI. They don't think like us &mdash; but they've learned to work with language in ways that are remarkably useful.</p>
+      <div class="reading-time">6 min read</div>
       <div class="audio-player" data-src="/audio/ch01-llms.mp3">
         <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
         <span class="audio-label">Listen to chapter</span>
@@ -1315,6 +1335,13 @@
       </div>
     </div>
 
+    <div class="callout teal reveal">
+      <div class="callout-label">Resources</div>
+      <p>
+        <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model/" target="_blank" rel="noopener">What are Large Language Models?</a> ·
+        <a href="https://developers.google.com/machine-learning/resources/intro-llms" target="_blank" rel="noopener">Intro to LLMs</a>
+      </p>
+    </div>
 
   </div>
 </section>
@@ -1326,6 +1353,7 @@
       <div class="chapter-num">Chapter 02</div>
       <h2>Frontier <em>Models</em></h2>
       <p class="chapter-lead">Not all AI models are created equal. Frontier models represent the bleeding edge &mdash; the most capable, most tested, and most carefully aligned systems available today.</p>
+      <div class="reading-time">4 min read</div>
       <div class="audio-player" data-src="/audio/ch02-frontier.mp3">
         <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
         <span class="audio-label">Listen to chapter</span>
@@ -1429,6 +1457,13 @@
       <p>Choosing the right tier depends on your use case. A real-time chatbot might prioritize speed (Haiku), while a complex code review might need maximum reasoning depth (Opus). <strong>Sonnet</strong> often hits the sweet spot for most applications.</p>
     </div>
 
+    <div class="callout teal reveal">
+      <div class="callout-label">Resources</div>
+      <p>
+        <a href="https://www.anthropic.com/research" target="_blank" rel="noopener">Anthropic Research</a> ·
+        <a href="https://aiindex.stanford.edu/report/" target="_blank" rel="noopener">Stanford AI Index Report</a>
+      </p>
+    </div>
 
   </div>
 </section>
@@ -1440,6 +1475,7 @@
       <div class="chapter-num">Chapter 03</div>
       <h2>Inference <em>&amp; Prompting</em></h2>
       <p class="chapter-lead">Training creates the model. Inference is when you actually use it. Understanding how inference works &mdash; and how to prompt effectively &mdash; is the key to getting great results.</p>
+      <div class="reading-time">5 min read</div>
       <div class="audio-player" data-src="/audio/ch03-inference.mp3">
         <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
         <span class="audio-label">Listen to chapter</span>
@@ -1561,6 +1597,13 @@
       <p>The system prompt is your most powerful lever. It sets the model's persona, constraints, and behavior <em>before</em> the user even speaks. In Claude's API, you pass it as a separate <code>system</code> parameter &mdash; use it to define tone, format rules, and guardrails.</p>
     </div>
 
+    <div class="callout teal reveal">
+      <div class="callout-label">Resources</div>
+      <p>
+        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic Prompt Engineering Guide</a> ·
+        <a href="https://www.promptingguide.ai/" target="_blank" rel="noopener">Prompt Engineering Guide</a>
+      </p>
+    </div>
 
   </div>
 </section>
@@ -1572,6 +1615,7 @@
       <div class="chapter-num">Chapter 04</div>
       <h2>Claude &amp; <em>Agentic AI</em></h2>
       <p class="chapter-lead">This is where everything comes together. Agentic AI uses LLMs not just as chatbots, but as autonomous agents that can reason, plan, use tools, and take action in the real world.</p>
+      <div class="reading-time">6 min read</div>
       <div class="audio-player" data-src="/audio/ch04-claude.mp3">
         <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
         <span class="audio-label">Listen to chapter</span>
@@ -1717,6 +1761,14 @@
       <p>Agentic AI is evolving rapidly. Multi-agent systems, where specialized agents collaborate on complex tasks, are already emerging. The key principles you've learned here &mdash; LLMs, frontier models, inference, tool use, and the agent loop &mdash; are the foundation for everything that comes next. Start building.</p>
     </div>
 
+    <div class="callout teal reveal">
+      <div class="callout-label">Resources</div>
+      <p>
+        <a href="https://docs.anthropic.com/" target="_blank" rel="noopener">Claude API Documentation</a> ·
+        <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building Effective Agents</a> ·
+        <a href="https://github.com/anthropics/agent-sdk" target="_blank" rel="noopener">Claude Agent SDK</a>
+      </p>
+    </div>
 
   </div>
 </section>
@@ -1728,6 +1780,7 @@
       <div class="chapter-num">Chapter 05</div>
       <h2>AI Risks &amp; <em>Hallucinations</em></h2>
       <p class="chapter-lead">AI models are powerful but imperfect. Understanding their failure modes &mdash; from confident fabrications to low-quality "slop" &mdash; is essential to using them responsibly.</p>
+      <div class="reading-time">5 min read</div>
       <div class="audio-player" data-src="/audio/ch05-risks.mp3">
         <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
         <span class="audio-label">Listen to chapter</span>
@@ -1860,6 +1913,13 @@
       </ul>
     </div>
 
+    <div class="callout teal reveal">
+      <div class="callout-label">Resources</div>
+      <p>
+        <a href="https://www.anthropic.com/research/responsible-scaling-policy" target="_blank" rel="noopener">Anthropic's Responsible Scaling Policy</a> ·
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for LLMs</a>
+      </p>
+    </div>
 
   </div>
 </section>
@@ -1871,6 +1931,7 @@
       <div class="chapter-num">Chapter 06</div>
       <h2>Model Context <em>Protocol</em></h2>
       <p class="chapter-lead">MCP is the open standard that connects AI models to the outside world &mdash; giving agents access to tools, data, and services through a universal protocol.</p>
+      <div class="reading-time">4 min read</div>
       <div class="audio-player" data-src="/audio/ch06-mcp.mp3">
         <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
         <span class="audio-label">Listen to chapter</span>
@@ -1996,6 +2057,14 @@
       <p>MCP is rapidly becoming the standard way to extend AI capabilities. Instead of building custom integrations for every tool, you connect once via MCP. As the ecosystem grows, any MCP-compatible agent can instantly access thousands of tools and data sources &mdash; making agents dramatically more useful out of the box.</p>
     </div>
 
+    <div class="callout teal reveal">
+      <div class="callout-label">Resources</div>
+      <p>
+        <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">MCP Documentation</a> ·
+        <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener">MCP Servers Repository</a> ·
+        <a href="https://spec.modelcontextprotocol.io/" target="_blank" rel="noopener">MCP Specification</a>
+      </p>
+    </div>
 
   </div>
 </section>
@@ -2007,6 +2076,7 @@
       <div class="chapter-num">Chapter 07</div>
       <h2>AI <em>Glossary</em></h2>
       <p class="chapter-lead">A quick reference for the key terms and concepts covered in this workshop.</p>
+      <div class="reading-time">3 min read</div>
       <div class="audio-player" data-src="/audio/ch07-glossary.mp3">
         <button class="play-btn" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></button>
         <span class="audio-label">Listen to chapter</span>
